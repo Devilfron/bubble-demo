@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    font-family: sans-serif;
+}
+
+/* --- Стилізація серця --- */
+.heart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transform: rotate(-45deg);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+/* --- Анімація пульсації --- */
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(-45deg);
+    }
+
+    25% {
+        transform: scale(1.2) rotate(-45deg);
+    }
+
+    50% {
+        transform: scale(0.9) rotate(-45deg);
+    }
+
+    75% {
+        transform: scale(1.1) rotate(-45deg);
+    }
+}
+
+.heart.animate {
+    animation: heartbeat 1s ease-in-out infinite;
+}
+
+/* --- Анімована кнопка --- */
+.animate-btn {
+    margin-top: 30px;
+    padding: 15px 25px;
+    background: white;
+    color: #e03131;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.animate-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
